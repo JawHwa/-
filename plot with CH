@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties 
 
 # 設定中文字型，fname給定下載的中文字型路徑(免費商用網址:https://hubermovie.com/cn_free_w)
-font = FontProperties(fname=r"NotoSansCJKtc-Medium.otf", size=10)
+myfont = FontProperties(fname=r"NotoSansCJKtc-Medium.otf", size=10)
 df = pd.DataFrame(data={'性別':['男生','女生'],'人數':[23,21]})
 plt.bar(df['性別'].index,df['人數'])
-plt.xticks(df['性別'].index,df['性別'],fontproperties=font)
+plt.xticks(df['性別'].index,df['性別'],fontproperties=myfont)
 plt.show()
