@@ -5,6 +5,22 @@ from matplotlib.font_manager import FontProperties
 # 設定中文字型，fname給定下載的中文字型路徑(免費商用網址:https://hubermovie.com/cn_free_w)
 myfont = FontProperties(fname=r"NotoSansCJKtc-Medium.otf", size=10)
 df = pd.DataFrame(data={'性別':['男生','女生'],'人數':[23,21]})
+
+# 繪製Bar圖表
 plt.bar(df['性別'].index,df['人數'])
+# 設定標籤屬性
 plt.xticks(df['性別'].index,df['性別'],fontproperties=myfont)
+plt.show()
+
+# 繪製Pie圖表
+# 官網網址:https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.pie.html
+# 參考網址:https://newaurora.pixnet.net/blog/post/227940020-python-%E4%BD%BF%E7%94%A8matplotlib%E7%95%AB%E5%9C%93%E9%A4%85%E5%9C%96%28pie-chart%29
+# 圓餅圖參數
+pie_patches, pie_texts, pie_autotexts = plt.pie(df['人數'],labels=df['性別'],autopct="%0.2f%%")
+# 設定分類的字型
+for t in pie_texts:
+    t.set_fontproperties(myFont)
+# 設定數值的字型
+for t in pie_autotexts:
+    t.set_fontproperties(myFont)
 plt.show()
