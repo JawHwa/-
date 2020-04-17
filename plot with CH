@@ -1,6 +1,9 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties 
+
+#           方法一 在每次繪圖時，設定中文字型參數
 
 # 設定中文字型，fname給定下載的中文字型路徑(免費商用網址:https://hubermovie.com/cn_free_w)
 myfont = FontProperties(fname=r"NotoSansCJKtc-Medium.otf", size=10)
@@ -24,3 +27,18 @@ for t in pie_texts:
 for t in pie_autotexts:
     t.set_fontproperties(myFont)
 plt.show()
+
+#           方法二 直接設定全局中文參數
+
+# 使用os.stat()抓取文字檔案資訊，對檔案大小約大於1M的篩選出來(因中文字型檔案通常較大)，用以找尋已有的中文字型
+fonts = [font.name for font in fontManager.ttflist if \
+         os.path.exists(font.fname) and os.stat(font.fname).st_size>1e6] 
+for font in fonts:
+    print(font)
+
+# 設定全局中文變數
+plt.rcParams['font.sans-serif']=['SimSun'] #用來正常顯示中文標籤
+plt.rcParams['axes.unicode_minus']=False #用來正常顯示負號
+
+df = pd.DataFrame(data={'性別':['男生','女生'],'人數':[23,21]})
+plt.bar(df['性別'],df['人數'])
