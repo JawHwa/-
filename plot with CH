@@ -35,6 +35,11 @@ fonts = [font.name for font in fontManager.ttflist if \
          os.path.exists(font.fname) and os.stat(font.fname).st_size>1e6] 
 for font in fonts:
     print(font)
+    
+# 也可直接抓取中文字形放到matplotlib\mpl-data\fonts\ttf資料夾下
+# 印出matplotlib路徑
+import matplotlib
+print(matplotlib.__file__)
 
 # 設定全局中文變數
 plt.rcParams['font.sans-serif']=['SimSun'] #用來正常顯示中文標籤
