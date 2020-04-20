@@ -1,6 +1,0 @@
-from os import walk
-path = "檔案路徑"
-for root, dirs, files in walk(path):
-    for i in files:
-        print(i)
-        break
